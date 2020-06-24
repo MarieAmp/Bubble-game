@@ -5,7 +5,7 @@ var bkg = new Image();
 bkg.src = "../images/clouds-34027_1280.png";
 
 var fish = new Image();
-fish.src = "../images/fish-2638627_640.png";
+fish.src = "../images/carretest.png";
 
 var leftB = new Image();
 leftB.src = "../images/block test.png";
@@ -46,83 +46,80 @@ obstacles[0] = {
 function draw() {
   var fishHeight = 150;
   var fishWidth = 150;
-  ctx.drawImage(bkg, 0, 0);
-  ctx.drawImage(fish, fishX, fishY, 150, 150);
+  ctx.clearRect(0,0,canvas.width,canvas.height)
+  // ctx.drawImage(bkg, 0, 0);
+  ctx.drawImage(fish, fishX, fishY, fishWidth, fishHeight);
+  scoreIncrease();
+  // drawScore();
+  console.log(score);
+  drawObstacles();
 
+  requestAnimationFrame(draw);
+}
+
+draw();
+
+function drawObstacles() {
   for (let i = 0; i < obstacles.length; i++) {
     ctx.drawImage(leftB, obstacles[i].x, obstacles[i].y);
     ctx.drawImage(rightB, obstacles[i].x + ajust, obstacles[i].y);
-
     obstacles[i].y++;
-
     if (obstacles[i].y == 500) {
       obstacles.push({
         x: Math.floor(Math.random() * leftB.width) - leftB.width,
         y: 0,
       });
     }
-
-    if (
-      fishY <= obstacles[i].y + leftB.height &&
-      //fishY + fishHeight <= obstacles[i].y + leftB.height &&
-      (fishX <= obstacles[i].x + leftB.width || fishX + fishWidth >= obstacles[i].x + ajust)
-    ) {
-    console.log("collision");
-    
-    }
   }
-  requestAnimationFrame(draw);
 }
 
-draw();
+var score = 0;
+function scoreIncrease() {
+  for (let i = 0; i < obstacles.length; i++) {
+    if (obstacles[i].y + leftB.height == 900) {
+      score = score + 5;
+      return score;
+    }
+  }
+}
 
-// function checkCollisions(allObstacles){
-//   for (let i=0; i<allObstacles.length; i++){
-//       if (player.x < allObstacles[i].x + allObstacles[i].w &&
-//           player.x + 120 > allObstacles[i].x &&
-//           player.y < allObstacles[i].y + allObstacles[i].h &&
-//           80 + player.y > allObstacles[i].y) {
-//            console.log('collision')
-//            player.score += 10
-//            console.log(player.score)
-//            var theScore = document.getElementById('thescore')
-//            theScore.innerHTML = `${player.score}`
-//        } else if (player.y < allObstacles[i].y) {
-//            player.lives -= 1
-//            console.log(player.lives)
-//        }
-//   }
-// // }
-// function checkCollisions(allObstacles){
-//     for (let i=0; i<allObstacles.length; i++){
-// if (
-//   (fishX < obstacles[i].x + obstacles[i].width &&
-//     (fishY < obstacles[i].y + obstacles[i].height ||
-//     fishY> obstacles[i].y))
-//   //   ||
-//   // (fishX + 150 > obstacles[i].x+ obstacles[i].width+ ajust &&
-//   //   fishY < obstacles[i].y + obstacles[i].height &&
-//   //   fishY>obstacles[i].y)
+function drawScore() {
+  ctx.fillStyle = "#0095DD";
+  ctx.font = "20px Verdana";
+  ctx.fillText("Score : " + score + "points", 10, 10);
+}
 
-// ) {
-//   window.alert("collision");
+function checkObstacles(){
+  for (let i = 0; i < obstacles.length; i++) {
+    if((fishX <= obstacles[i].x + leftB.width
+
+    )
+//fishY <= obstacles[i].y &&
+//       // fishY +fishHeight<= obstacles[i].y + leftB.height) &&
+//         (fishX <= obstacles[i].x + leftB.width ||
+//           fishX + fishWidth >= obstacles[i].x + ajust))
+
+// function checkobstacles(){
+//   for(let i=0;i<obstacles.length;i++){
+// if ( haut poisson <bas objet droite
+//   ou haut poisson <bas objet gauche
+// bas poisson>haut de l'obstacle
+
+
+//   fishY +fishHeight< obstacles[i].y||
+//   fishY> obstacles[i].y + leftB.height &&
+//   fishX + fishWidth< obstacles[i].x + ajus
+
+//   // fishY +fishHeight<= obstacles[i].y + leftB.height) &&
+//     (fishX <= obstacles[i].x + leftB.width ||
+//       fishX + fishWidth >= obstacles[i].x + ajust))
+//  {
+//   console.log("Game Over");
+//   //document.location.reload
 // }
-//     }
-//   }
 
-const backgroundImage = {
-  img: img,
-  x: 0,
-  y: 0,
-  speed: -1,
-
-  move: function () {
-    this.y += this.speed;
-    this.y %= backgroundCanvas.height;
-  },
-};
-
-// fishY<= obstacles[i].y +leftB.height &&
-//  fishY + fish.height <= obstacles[i].y + leftB.height&&
-//  (fishX<=obstacles[i]+leftB.width ||
-//   fishX+150>=leftB+ajust)
+// this.bottom() < obstacle.top() ||
+// this.top() > obstacle.bottom() ||
+// this.right() < obstacle.left() ||-
+// this.left() > obstacle.right()
+// );
