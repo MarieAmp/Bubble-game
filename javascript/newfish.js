@@ -5,13 +5,13 @@ var bkg = new Image();
 bkg.src = "../images/clouds-34027_1280.png";
 
 var fish = new Image();
-fish.src = "../images/carretest.png";
+fish.src = "../images/fish-2638627_640.png";
 
 var leftB = new Image();
-leftB.src = "../images/block test.png";
+leftB.src = "../images/newBgauche.png";
 
 var rightB = new Image();
-rightB.src = "../images/block test2.png";
+rightB.src = "../images/newtestbdroite.png";
 
 var fishX = 300;
 var fishY = 650;
@@ -19,22 +19,23 @@ var fishY = 650;
 document.addEventListener("keydown", (e) => {
   switch (e.keyCode) {
     case 38: // up arrow
-      fishY -= 20;
+      fishY -= 25;
       break;
     case 40: // down arrow
-      fishY += 20;
+      fishY += 25;
       break;
     case 37: // left arrow
-      fishX -= 20;
+      fishX -= 25;
       break;
     case 39: // right arrow
-      fishX += 20;
+      fishX += 25;
       break;
   }
 });
 
 let gap = 200;
 let ajust = leftB.width + gap;
+var score = 0;
 
 var obstacles = [];
 
@@ -42,17 +43,16 @@ obstacles[0] = {
   x: 0,
   y: 0,
 };
-
+var fishHeight = 150;
+var fishWidth = 150;
 function draw() {
-  var fishHeight = 150;
-  var fishWidth = 150;
-  ctx.clearRect(0,0,canvas.width,canvas.height)
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
   // ctx.drawImage(bkg, 0, 0);
   ctx.drawImage(fish, fishX, fishY, fishWidth, fishHeight);
   scoreIncrease();
-  // drawScore();
-  console.log(score);
+  drawScore();
   drawObstacles();
+  checkObstacles();
 
   requestAnimationFrame(draw);
 }
@@ -73,53 +73,48 @@ function drawObstacles() {
   }
 }
 
-var score = 0;
 function scoreIncrease() {
   for (let i = 0; i < obstacles.length; i++) {
     if (obstacles[i].y + leftB.height == 900) {
       score = score + 5;
-      return score;
+      // return score;
+      if (score === 50) {
+        clearInterval();
+        window.alert("You Win!")
+      }
     }
   }
 }
 
 function drawScore() {
-  ctx.fillStyle = "#0095DD";
+  ctx.fillStyle = "black";
   ctx.font = "20px Verdana";
-  ctx.fillText("Score : " + score + "points", 10, 10);
+  ctx.fillText("Score : " + score + " points", 10, 950);
 }
 
-function checkObstacles(){
+function checkObstacles() {
   for (let i = 0; i < obstacles.length; i++) {
-    if((fishX <= obstacles[i].x + leftB.width
+    if (
+      fishY <= obstacles[i].y + leftB.height &&
+      fishY + fishHeight >= obstacles[i].y &&
+      (fishX <= obstacles[i].x + leftB.width ||
+        fishX + fishWidth >= obstacles[i].x + ajust)
+    ) {
+      console.log("Game Over");
+      clear();
+      document.location.reload();
+    }
+  }
+}
 
-    )
-//fishY <= obstacles[i].y &&
-//       // fishY +fishHeight<= obstacles[i].y + leftB.height) &&
-//         (fishX <= obstacles[i].x + leftB.width ||
-//           fishX + fishWidth >= obstacles[i].x + ajust))
+function clear() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+}
 
-// function checkobstacles(){
-//   for(let i=0;i<obstacles.length;i++){
-// if ( haut poisson <bas objet droite
-//   ou haut poisson <bas objet gauche
-// bas poisson>haut de l'obstacle
+function youWin() {
+  if (score === 50) {
+    clear();
+  }
+}
 
 
-//   fishY +fishHeight< obstacles[i].y||
-//   fishY> obstacles[i].y + leftB.height &&
-//   fishX + fishWidth< obstacles[i].x + ajus
-
-//   // fishY +fishHeight<= obstacles[i].y + leftB.height) &&
-//     (fishX <= obstacles[i].x + leftB.width ||
-//       fishX + fishWidth >= obstacles[i].x + ajust))
-//  {
-//   console.log("Game Over");
-//   //document.location.reload
-// }
-
-// this.bottom() < obstacle.top() ||
-// this.top() > obstacle.bottom() ||
-// this.right() < obstacle.left() ||-
-// this.left() > obstacle.right()
-// );
