@@ -49,8 +49,7 @@ h1 {
 
 .button {
   border-radius: 12px 0 12px 0;
-  /* background: #1b59df; */
-  background-image: url("../images/water.jpg");
+  background:#1b97df;
   border: none;
   color:whitesmoke;
   font: bold 12px Verdana;

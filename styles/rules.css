@@ -46,20 +46,23 @@ iframe {
   justify-content: center;
   width: 30vh;
 }
+
 .keys {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-evenly;
   flex-direction: column;
-  height:25vh;
-
+  height: 25vh;
+  width: 50vh;
 }
+
 .key2 {
   display: flex;
   align-items: flex-end;
-  justify-content: center;
+  justify-content: space-between;
   flex-direction: row;
   font-size: 2vh;
+  width: 50vh
 }
 
 .up {
@@ -68,8 +71,7 @@ iframe {
 
 .button {
   border-radius: 12px 0 12px 0;
-  /* background: #1b59df; */
-  background-image: url("../images/water.jpg");
+  background: #1b97df;
   border: none;
   color: whitesmoke;
   font: bold 12px Verdana;
@@ -89,6 +91,7 @@ iframe {
   align-items: center;
   justify-content: center;
 }
+
 a:hover.button {
   color: #00ccbb;
 }

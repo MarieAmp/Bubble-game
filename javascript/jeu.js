@@ -93,14 +93,24 @@ function drawObstacles() {
     ctx.drawImage(leftB, obstacles[i].x, obstacles[i].y);
     ctx.drawImage(rightB, obstacles[i].x + ajust, obstacles[i].y);
     obstacles[i].y++;
-    if (obstacles[i].y == 500) {
-      obstacles.push({
-        x: Math.floor(Math.random() * leftB.width) - leftB.width,
-        y: 0,
-      });
+    if (score <20) {
+      if (obstacles[i].y == 400) {
+        obstacles.push({
+          x: Math.floor(Math.random() * leftB.width) - leftB.width,
+          y: 0,
+        });
+      } 
+    }else {
+        if (obstacles[i].y == 300) {
+          obstacles.push({
+            x: Math.floor(Math.random() * leftB.width) - leftB.width,
+            y: 0,
+          });
+        }
+      }
     }
   }
-}
+
 
 function scoreIncrease() {
   for (let i = 0; i < obstacles.length; i++) {
@@ -140,7 +150,7 @@ function clear() {
 }
 
 function youWin() {
-  if (score === 50) {
+  if (score === 100) {
     clear();
   }
 }
