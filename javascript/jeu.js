@@ -14,7 +14,34 @@ var rightB = new Image();
 rightB.src = "../images/newtestbdroite.png";
 
 var fishX = 300;
-var fishY = 650;
+var fishY = 550;
+
+const backgroundImage = {
+  img: bkg,
+  x: 0,
+  y: 0,
+  speed: 1,
+
+  move: function () {
+    this.y += this.speed;
+    this.y %= canvas.height;
+  },
+
+  draw: function () {
+    ctx.drawImage(this.img, 0, this.y);
+    if (this.speed < 0) {
+      ctx.drawImage(this.img, 0, this.y + this.img.height);
+    } else {
+      ctx.drawImage(this.img, 0, this.y - canvas.height);
+    }
+  },
+};
+
+function updateBackgroundCanvas() {
+  backgroundImage.move();
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  backgroundImage.draw();
+}
 
 document.addEventListener("keydown", (e) => {
   switch (e.keyCode) {
@@ -45,10 +72,12 @@ obstacles[0] = {
 };
 var fishHeight = 150;
 var fishWidth = 150;
+
 function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  // ctx.drawImage(bkg, 0, 0);
+  updateBackgroundCanvas();
   ctx.drawImage(fish, fishX, fishY, fishWidth, fishHeight);
+
   scoreIncrease();
   drawScore();
   drawObstacles();
@@ -75,12 +104,11 @@ function drawObstacles() {
 
 function scoreIncrease() {
   for (let i = 0; i < obstacles.length; i++) {
-    if (obstacles[i].y + leftB.height == 900) {
+    if (obstacles[i].y + leftB.height == 700) {
       score = score + 5;
-      // return score;
       if (score === 50) {
         clearInterval();
-        window.alert("You Win!")
+        window.alert("You Win!");
       }
     }
   }
@@ -89,7 +117,7 @@ function scoreIncrease() {
 function drawScore() {
   ctx.fillStyle = "black";
   ctx.font = "20px Verdana";
-  ctx.fillText("Score : " + score + " points", 10, 950);
+  ctx.fillText("Score : " + score + " points", 10, 700);
 }
 
 function checkObstacles() {
@@ -116,5 +144,3 @@ function youWin() {
     clear();
   }
 }
-
-

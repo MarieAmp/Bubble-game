@@ -1,0 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Pangolin&display=swap");
+
+body {
+  font-family: "pangolin", Arial, Helvetica, sans-serif;
+  background-image: url("../images/background-img.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  height: 100vh;
+}
