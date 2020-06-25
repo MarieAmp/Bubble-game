@@ -93,32 +93,32 @@ function drawObstacles() {
     ctx.drawImage(leftB, obstacles[i].x, obstacles[i].y);
     ctx.drawImage(rightB, obstacles[i].x + ajust, obstacles[i].y);
     obstacles[i].y++;
-    if (score <20) {
+    if (score < 20) {
       if (obstacles[i].y == 400) {
         obstacles.push({
           x: Math.floor(Math.random() * leftB.width) - leftB.width,
           y: 0,
         });
-      } 
-    }else {
-        if (obstacles[i].y == 300) {
-          obstacles.push({
-            x: Math.floor(Math.random() * leftB.width) - leftB.width,
-            y: 0,
-          });
-        }
+      }
+    } else {
+      if (obstacles[i].y == 300) {
+        obstacles.push({
+          x: Math.floor(Math.random() * leftB.width) - leftB.width,
+          y: 0,
+        });
       }
     }
   }
-
+}
 
 function scoreIncrease() {
   for (let i = 0; i < obstacles.length; i++) {
     if (obstacles[i].y + leftB.height == 700) {
       score = score + 5;
-      if (score === 50) {
+      if (score === 100) {
         clearInterval();
         window.alert("You Win!");
+        document.location.replace((url = "../rules.html"));
       }
     }
   }
@@ -139,8 +139,7 @@ function checkObstacles() {
         fishX + fishWidth >= obstacles[i].x + ajust)
     ) {
       console.log("Game Over");
-      clear();
-      document.location.reload();
+      document.location.replace("../rules.html");
     }
   }
 }
