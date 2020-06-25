@@ -8,4 +8,94 @@ body {
   background-size: cover;
   position: relative;
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+#consigne {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+iframe {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 20vh;
+}
+
+.gif {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column-reverse;
+}
+
+.gif p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#consigne img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30vh;
+}
+.keys {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+  height:25vh;
+
+}
+.key2 {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  flex-direction: row;
+  font-size: 2vh;
+}
+
+.up {
+  font-size: 2vh;
+}
+
+.button {
+  border-radius: 12px 0 12px 0;
+  /* background: #1b59df; */
+  background-image: url("../images/water.jpg");
+  border: none;
+  color: whitesmoke;
+  font: bold 12px Verdana;
+  padding: 6px 0 6px 0;
+  box-shadow: 1px 1px 3px #999;
+  width: 15vh;
+  text-align: center;
+  height: 4vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+a:hover.button {
+  color: #00ccbb;
+}
+
+.button span {
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
