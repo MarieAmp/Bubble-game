@@ -2,16 +2,16 @@ var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
 
 var bkg = new Image();
-bkg.src = "../images/clouds.png";
+bkg.src = "./../images/clouds.png";
 
 var fish = new Image();
-fish.src = "../images/fish.png";
+fish.src = "./../images/fish.png";
 
 var leftB = new Image();
-leftB.src = "../images/newBgauche.png";
+leftB.src = "./../images/newBgauche.png";
 
 var rightB = new Image();
-rightB.src = "../images/newtestbdroite.png";
+rightB.src = "./../images/newtestbdroite.png";
 
 var fishX = 300;
 var fishY = 550;
