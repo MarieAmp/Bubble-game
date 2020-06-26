@@ -18,19 +18,20 @@ rightB.src = "./images/newtestbdroite.png";
 var fishX = 300;
 var fishY = 550;
 
-let gap = 200;
-let ajust = leftB.width + gap;
+let gap = 250;
+let ajust = 650; //leftB.width + gap;
+console.log("ajust at the begging", ajust);
 var score = 0;
 
-var obstacles = [];
+var obstacles = [
+  {
+    x: 0,
+    y: 0,
+  },
+];
 
-obstacles[0] = {
-  x: 0,
-  y: 0,
-};
 var fishHeight = 150;
 var fishWidth = 150;
-
 
 const backgroundImage = {
   img: bkg,
@@ -90,10 +91,11 @@ function draw() {
 // Lancement du jeu
 draw();
 
-// Declaration des fonctions 
+// Declaration des fonctions
 
 function drawObstacles() {
   for (let i = 0; i < obstacles.length; i++) {
+    console.log("width of branch left", leftB.width);
     ctx.drawImage(leftB, obstacles[i].x, obstacles[i].y);
     ctx.drawImage(rightB, obstacles[i].x + ajust, obstacles[i].y);
     obstacles[i].y++;
@@ -121,8 +123,7 @@ function scoreIncrease() {
       score = score + 5;
       if (score === 100) {
         clearInterval();
-        window.alert("You Win!");
-        document.location.replace((url = "rules.html"));
+        document.location.replace((url = "win.html"));
       }
     }
   }
@@ -142,8 +143,8 @@ function checkObstacles() {
       (fishX <= obstacles[i].x + leftB.width ||
         fishX + fishWidth >= obstacles[i].x + ajust)
     ) {
-      window.alert("Game Over");
-      document.location.replace("rules.html");
+      // window.alert("Game Over");
+      document.location.replace("gameover.html");
     }
   }
 }
