@@ -2,10 +2,10 @@ var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
 
 var bkg = new Image();
-bkg.src = "../images/clouds-34027_1280.png";
+bkg.src = "../images/clouds.png";
 
 var fish = new Image();
-fish.src = "../images/fish-2638627_640.png";
+fish.src = "../images/fish.png";
 
 var leftB = new Image();
 leftB.src = "../images/newBgauche.png";
