@@ -1,6 +1,8 @@
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
 
+// Déclaration des variables
+
 var bkg = new Image();
 bkg.src = "./images/clouds.png";
 
@@ -15,6 +17,20 @@ rightB.src = "./images/newtestbdroite.png";
 
 var fishX = 300;
 var fishY = 550;
+
+let gap = 200;
+let ajust = leftB.width + gap;
+var score = 0;
+
+var obstacles = [];
+
+obstacles[0] = {
+  x: 0,
+  y: 0,
+};
+var fishHeight = 150;
+var fishWidth = 150;
+
 
 const backgroundImage = {
   img: bkg,
@@ -37,11 +53,7 @@ const backgroundImage = {
   },
 };
 
-function updateBackgroundCanvas() {
-  backgroundImage.move();
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  backgroundImage.draw();
-}
+// Définition des fonctions du clavier
 
 document.addEventListener("keydown", (e) => {
   switch (e.keyCode) {
@@ -60,18 +72,7 @@ document.addEventListener("keydown", (e) => {
   }
 });
 
-let gap = 200;
-let ajust = leftB.width + gap;
-var score = 0;
-
-var obstacles = [];
-
-obstacles[0] = {
-  x: 0,
-  y: 0,
-};
-var fishHeight = 150;
-var fishWidth = 150;
+// Démarrage du jeu et affichage des différents éléments
 
 function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -86,7 +87,10 @@ function draw() {
   requestAnimationFrame(draw);
 }
 
+// Lancement du jeu
 draw();
+
+// Declaration des fonctions 
 
 function drawObstacles() {
   for (let i = 0; i < obstacles.length; i++) {
@@ -138,7 +142,7 @@ function checkObstacles() {
       (fishX <= obstacles[i].x + leftB.width ||
         fishX + fishWidth >= obstacles[i].x + ajust)
     ) {
-      console.log("Game Over");
+      window.alert("Game Over");
       document.location.replace("rules.html");
     }
   }
@@ -152,4 +156,10 @@ function youWin() {
   if (score === 100) {
     clear();
   }
+}
+
+function updateBackgroundCanvas() {
+  backgroundImage.move();
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  backgroundImage.draw();
 }
