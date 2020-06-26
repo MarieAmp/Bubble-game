@@ -49,9 +49,9 @@ h1 {
 
 .button {
   border-radius: 12px 0 12px 0;
-  background:#1b97df;
+  background: #1b97df;
   border: none;
-  color:whitesmoke;
+  color: whitesmoke;
   font: bold 12px Verdana;
   padding: 6px 0 6px 0;
   box-shadow: 1px 1px 3px #999;
@@ -61,24 +61,21 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: center;
-  text-decoration: none; 
+  text-decoration: none;
 }
 
-.btn{
-    display: flex;
-    align-items: center;
-    justify-content: center;  
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 a:hover.button {
   color: #00ccbb;
- 
-
 }
 
 .button span {
-    font-size:2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center; 
-   
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

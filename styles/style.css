@@ -1,33 +1,17 @@
-body{
+body {
   background-image: url("../images/background-img.jpg");
-background-repeat: no-repeat;
-background-position: center;
-background-size: cover;
-position: relative;
-height: 100vh;
-}
-
-#canvas-position{
-  display: flex;
-  margin: auto;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
   position: relative;
+  height: 100vh;
+  display: flex;
   justify-content: center;
   align-items: center;
-}  
+}
 
-#background-canvas{
-
+canvas {
   display: flex;
   margin: auto;
   position: absolute;
 }
-
-
-canvas {
- 
-  display: flex;
-  margin: auto; */
-  position: absolute;
- }
-
-
