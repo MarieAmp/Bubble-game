@@ -1,0 +1,69 @@
+@import url("https://fonts.googleapis.com/css2?family=Pangolin&display=swap");
+
+body {
+  font-family: "pangolin", Arial, Helvetica, sans-serif;
+  background-image: url("../images/background-img.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  height: 100vh;
+}
+
+.congrats {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+  height: 90vh;
+}
+h1 {
+  display: flex;
+  width: 90vh;
+  font-size: 5vh;
+  text-align: center;
+  justify-content: center;
+  margin: 7vh auto 2vh;
+}
+
+.text{
+    display: flex;
+    font-size: 3vh;
+}
+
+.button {
+    border-radius: 12px 0 12px 0;
+    background:#1b97df;
+    border: none;
+    color:whitesmoke;
+    font: bold 12px Verdana;
+    padding: 6px 0 6px 0;
+    box-shadow: 1px 1px 3px #999;
+    width: 25vh;
+    text-align: center;
+    height: 4vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none; 
+  }
+  
+  .btn{
+      display: flex;
+      align-items: center;
+      justify-content: center;  
+  }
+  a:hover.button {
+    color: #00ccbb;
+   
+  
+  }
+  
+  .button span {
+      font-size:2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center; 
+     
+  }
+  
