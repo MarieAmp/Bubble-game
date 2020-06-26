@@ -118,7 +118,7 @@ function scoreIncrease() {
       if (score === 100) {
         clearInterval();
         window.alert("You Win!");
-        document.location.replace((url = "../rules.html"));
+        document.location.replace((url = "./rules.html"));
       }
     }
   }
