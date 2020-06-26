@@ -118,7 +118,7 @@ function scoreIncrease() {
       if (score === 100) {
         clearInterval();
         window.alert("You Win!");
-        document.location.replace((url = "./rules.html"));
+        document.location.replace((url = "rules.html"));
       }
     }
   }
@@ -139,7 +139,7 @@ function checkObstacles() {
         fishX + fishWidth >= obstacles[i].x + ajust)
     ) {
       console.log("Game Over");
-      document.location.replace("../rules.html");
+      document.location.replace("rules.html");
     }
   }
 }
